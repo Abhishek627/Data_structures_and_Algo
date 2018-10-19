@@ -29,6 +29,7 @@ class BinaryTree(object):
         print "INORDER", self.inorder_print(self.root, "")[:-1]
         print  "POSTORDER",self.postorder_print(self.root, "")[:-1]
         print  "PREORDER",self.preorder_print(self.root, "")[:-1]
+        print "LEVEL ORDER", self.level_order_traversal(self.root,"")[:-1]
 
 
 
@@ -99,6 +100,19 @@ class BinaryTree(object):
             traversal+= (str(start.value)+"-")
         return  traversal
 
+    def level_order_traversal(self,start,traversal):
+        from collections import deque
+        queue= deque()
+        queue.append(start)
+        while len(queue)>0:
+            elem = queue.popleft()
+            traversal+= str(elem.value)+ "-"
+            if elem.left:
+                queue.append(elem.left)
+            if elem.right:
+                queue.append(elem.right)
+        return traversal
+
 if __name__ == '__main__':
 
     # Set up tree
@@ -108,7 +122,13 @@ if __name__ == '__main__':
     tree.root.left.left = Node(4)
     tree.root.left.right = Node(5)
 
-    # Test search
+    '''
+                                        1
+                                       / \
+                                      2   3
+                                     / \
+                                    4   5
+    '''
     # Should be True
     print tree.search(2)
     # Should be False
