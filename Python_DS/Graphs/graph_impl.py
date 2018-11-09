@@ -112,4 +112,11 @@ print graph.get_edge_list()
 # Should be [None, [(2, 100), (3, 101), (4, 102)], None, [(4, 103)], None]
 print graph.get_adjacency_list()
 # Should be [[0, 0, 0, 0, 0], [0, 0, 100, 101, 102], [0, 0, 0, 0, 0], [0, 0, 0, 0, 103], [0, 0, 0, 0, 0]]
-print graph.get_adjacency_matrix()
+# print graph.get_adjacency_matrix()
+
+from Disjoint_sets import DisjointSets
+ds= DisjointSets([1,2,3,4])
+for item in graph.get_edge_list():
+     weight, edge_from, edge_to = item
+     ds.union(edge_from,edge_to)
+     # should print cycle detected
