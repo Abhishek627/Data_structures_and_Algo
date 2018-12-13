@@ -44,6 +44,7 @@ class FenwickTree():
 if __name__ == '__main__':
     N= int(raw_input())
     input_arr= map(int,raw_input().strip().split(' '))
+    print type(input_arr)
     ft = FenwickTree(input_arr)
     Q= int(raw_input())
     for i in xrange(Q):

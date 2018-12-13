@@ -24,10 +24,9 @@ def superset_bit(input_list):
     # use bit manipulation to generate power set
     num_elm= len(input_list)
     power_set_len= 2** num_elm
-    answer= [[] for i in xrange(power_set_len)]
+    answer= [[] for _ in xrange(power_set_len)]
     for i in xrange(num_elm):
         for j in xrange(power_set_len):
-            # print j>>i
             if (j >> i) & 1 :
                 answer[j].append(input_list[i])
     return answer
