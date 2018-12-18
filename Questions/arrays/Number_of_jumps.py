@@ -19,7 +19,16 @@ def jump_count(input_list):
     return count
 
 
+def is_numeric_palindrome(n):
+    # Write your code here
+
+    input_list= map(int,str(n))
+    return input_list == input_list[::-1]
+
 
 if __name__ == '__main__':
     input_list= [3, 4 ,1 ,2, 5, 6, 9, 0, 1 ,2, 3, 1]
     print jump_count(input_list)
+
+
+    print is_numeric_palindrome(12001)
