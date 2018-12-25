@@ -49,7 +49,7 @@ def LIS_binary_search(input_list):
     '''
     O(n*log(n)) solution:
     Basically, maintain 2 arrays, M and P
-    table[i]  ----- store the index of smallest elem before index i , which forms a LIS with this elem as last elem
+    tableIndex[i]  ----- store the index of smallest elem before index i , which forms a LIS with this elem as last elem
     preIndex[j] ------ store the index of previous elem in this LIS with input_list[j] as last elem
 
     table is guranteed to be a increasing input_list, therefore, we can use binary search here to find position of this elem
@@ -85,8 +85,6 @@ def LIS_binary_search(input_list):
     return table
 
 
-
-
 if __name__ == '__main__':
     input_list = [16, 3, 5, 19, 10, 14, 12, 0, 15]
     print LIS_length(input_list),
@@ -104,5 +102,6 @@ if __name__ == '__main__':
     print LIS_length(input_list),
     LIS_sol(input_list)
 
-    input_list = [4,2,3,12,11]
-    print LIS_binary_search(input_list) ,  LIS_sol(input_list)
+    input_list = [4, 2, 3, 12, 11]
+    print LIS_binary_search(input_list)
+    LIS_sol(input_list)
