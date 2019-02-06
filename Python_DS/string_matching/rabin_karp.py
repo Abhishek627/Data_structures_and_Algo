@@ -38,14 +38,16 @@ def rabin_karp(text, pattern , prime=101 , base= 256):
         else:
             if i< N-M:
                 # Update hash value here
-                h_txt = get_mod(h_txt- get_mod(ord(text[i-M])*E,prime),prime)
+                h_txt = get_mod(h_txt- get_mod(ord(text[i])*E,prime),prime)
                 h_txt = get_mod(h_txt* base, prime)
-                h_txt = get_mod(h_txt+ ord(text[i]),prime)
+                h_txt = get_mod(h_txt+ ord(text[i+M]),prime)
         i+=1
 
 
 if __name__ == '__main__':
-    # rabin_karp('GEEKS FOR GEEKS', 'GEEKS')
+    rabin_karp('GEEKS FOR GEEKS', 'GEEKS')
+    print "*****************************"
+
     rabin_karp('babalabalabalatheend', 'alabala')
 
     print "*****************************"
