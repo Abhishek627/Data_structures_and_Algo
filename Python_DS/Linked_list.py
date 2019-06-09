@@ -70,24 +70,53 @@ class LinkedList(object):
             else:
                 self.head = curr.next
 
+    def removeDuplicates(self,k):
+        if k<2:
+            return self.head
+        curr= self.head
+        prev = self.head
+        count_del = 0
+        while curr:
+            while curr.next and prev.data==curr.next.data and count_del<k:
+                curr= curr.next
+                count_del+=1
+
+            if prev.next == curr:
+                prev= prev.next
+            else:
+                prev.next= curr.next
+
+            curr=curr.next
+
+
 if __name__ == '__main__':
-    e1 = Element(10)
-    e2 = Element(20)
-    e3 = Element(30)
+    # e1 = Element(10)
+    # e2 = Element(20)
+    # e3 = Element(30)
+    #
+    # ll = LinkedList(e1)
+    # ll.print_ll()
+    # ll.append(e2)
+    # ll.print_ll()
+    # ll.append(e3)
+    # ll.print_ll()
+    #
+    # print ll.get_position(1), ll.get_position(2), ll.get_position(3), ll.get_position(4), ll.get_position(-1)
+    #
+    # e4 = Element(100)
+    # ll.insert(e4, 2)
+    # ll.print_ll()
+    # ll.delete(20)
+    # ll.print_ll()
+    # ll.delete(10)
+    # ll.print_ll()
 
-    ll = LinkedList(e1)
-    ll.print_ll()
-    ll.append(e2)
-    ll.print_ll()
-    ll.append(e3)
-    ll.print_ll()
+    ll = LinkedList(Element('A'))
+    ll.append(Element('B'))
+    ll.append(Element('B'))
+    ll.append(Element('B'))
 
-    print ll.get_position(1), ll.get_position(2), ll.get_position(3), ll.get_position(4), ll.get_position(-1)
+    # ll.print_ll()
 
-    e4 = Element(100)
-    ll.insert(e4, 2)
-    ll.print_ll()
-    ll.delete(20)
-    ll.print_ll()
-    ll.delete(10)
+    ll.removeDuplicates(k=3)
     ll.print_ll()

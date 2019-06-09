@@ -65,6 +65,8 @@ if __name__ == '__main__':
     stack = Inbuilt_Stack()
     stack.push(1)
     stack.push(2)
+    stack.top()
+    stack.pop()
     stack.push(3)
     stack.push(4)
     stack.push(5)
