@@ -23,7 +23,7 @@ def freqQuery(queries):
         elif idx==2:
             count[curr_dict[val]]-=1
             curr_dict[val]-=1 if curr_dict[val]>0 else 0
-            count[curr_dict[val]]-=1
+            count[curr_dict[val]]+=1
 
         else:
             result.append(1) if count[val] else result.append(0)
@@ -32,6 +32,7 @@ def freqQuery(queries):
 
 
 if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
     q = int(raw_input().strip())
 
@@ -41,6 +42,8 @@ if __name__ == '__main__':
         queries.append(map(int, raw_input().rstrip().split()))
 
     ans = freqQuery(queries)
-    print '\n'.join(map(str, ans))
 
+    fptr.write('\n'.join(map(str, ans)))
+    fptr.write('\n')
 
+    fptr.close()
