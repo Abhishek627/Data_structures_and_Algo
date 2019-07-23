@@ -21,7 +21,7 @@ def minWindow(S, T):
         if S[end] in T_dict:
             T_dict[S[end]]-=1
             if T_dict[S[end]]==0 : found-=1
-        end+=1
+        end += 1
         while (found == 0):
             # Increment left pointer and check if another optimal answer exists
             if end-start < ans_size:

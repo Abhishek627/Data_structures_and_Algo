@@ -6,18 +6,18 @@ import random
 import re
 import sys
 
+
 # Complete the maximumToys function below.
 def maximumToys(prices, k):
-    result=0
-    spent=0
+    result = 0
+    spent = 0
     prices.sort()
     for item in prices:
-        if spent+item < k:
-            spent+=item
-            result+=1
+        if spent + item < k:
+            spent += item
+            result += 1
 
     return result
-
 
 
 if __name__ == '__main__':

@@ -27,11 +27,9 @@ class BinaryTree(object):
 
     def print_tree(self):
         print "INORDER", self.inorder_print(self.root, "")[:-1]
-        print  "POSTORDER",self.postorder_print(self.root, "")[:-1]
-        print  "PREORDER",self.preorder_print(self.root, "")[:-1]
-        print "LEVEL ORDER", self.level_order_traversal(self.root,"")[:-1]
-
-
+        print  "POSTORDER", self.postorder_print(self.root, "")[:-1]
+        print  "PREORDER", self.preorder_print(self.root, "")[:-1]
+        print "LEVEL ORDER", self.level_order_traversal(self.root, "")[:-1]
 
     def preorder_search(self, start, find_val):
         if start:
@@ -50,16 +48,15 @@ class BinaryTree(object):
     #         return self.inorder_search(start.right,find_val)
     #     return False
 
-    def inorder_search(self,start,find_vaL):
+    def inorder_search(self, start, find_vaL):
         if start:
-            left= self.inorder_search(start.left,find_vaL)
-            if start.value==find_vaL:
+            left = self.inorder_search(start.left, find_vaL)
+            if start.value == find_vaL:
                 return True
-            right= self.inorder_search(start.right,find_vaL)
+            right = self.inorder_search(start.right, find_vaL)
             if left or right:
                 return True
         return False
-
 
     def preorder_print(self, start, traversal):
         '''
@@ -74,7 +71,7 @@ class BinaryTree(object):
             traversal = self.preorder_print(start.right, traversal)
         return traversal
 
-    def inorder_print(self,start,traversal):
+    def inorder_print(self, start, traversal):
         '''
         left-- root---right
         :param start:
@@ -82,12 +79,12 @@ class BinaryTree(object):
         :return:
         '''
         if start:
-            traversal= self.inorder_print(start.left,traversal)
-            traversal+= (str(start.value)+"-")
-            traversal= self.inorder_print(start.right,traversal)
-        return  traversal
+            traversal = self.inorder_print(start.left, traversal)
+            traversal += (str(start.value) + "-")
+            traversal = self.inorder_print(start.right, traversal)
+        return traversal
 
-    def postorder_print(self,start,traversal):
+    def postorder_print(self, start, traversal):
         '''
         Left-- right --- root
         :param start:
@@ -95,23 +92,24 @@ class BinaryTree(object):
         :return:
         '''
         if start:
-            traversal= self.inorder_print(start.left,traversal)
-            traversal= self.inorder_print(start.right,traversal)
-            traversal+= (str(start.value)+"-")
-        return  traversal
+            traversal = self.inorder_print(start.left, traversal)
+            traversal = self.inorder_print(start.right, traversal)
+            traversal += (str(start.value) + "-")
+        return traversal
 
-    def level_order_traversal(self,start,traversal):
+    def level_order_traversal(self, start, traversal):
         from collections import deque
-        queue= deque()
+        queue = deque()
         queue.append(start)
-        while len(queue)>0:
+        while len(queue) > 0:
             elem = queue.popleft()
-            traversal+= str(elem.value)+ "-"
+            traversal += str(elem.value) + "-"
             if elem.left:
                 queue.append(elem.left)
             if elem.right:
                 queue.append(elem.right)
         return traversal
+
 
 if __name__ == '__main__':
 
@@ -134,7 +132,7 @@ if __name__ == '__main__':
     # Should be False
     print tree.search(6)
 
-    for i in xrange(0,7):
+    for i in xrange(0, 7):
         print i, tree.search(i)
 
     # Test print_tree
