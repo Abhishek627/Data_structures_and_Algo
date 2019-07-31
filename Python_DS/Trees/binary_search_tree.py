@@ -10,7 +10,7 @@ class BinarySearchTree(object):
         self.right_child = None
 
     def insert(self, new_val):
-        if  new_val> self.value:
+        if  new_val > self.value:
             #Go to right_child subtree
             if self.right_child:
                 self.right_child.insert(new_val)
