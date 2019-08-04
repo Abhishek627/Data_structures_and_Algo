@@ -1,3 +1,6 @@
+'''
+Check if given traversals belong to the same tree
+'''
 class Solution:
     # @param A : list of integers
     # @param B : list of integers

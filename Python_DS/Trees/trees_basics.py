@@ -40,7 +40,6 @@ def inorder_traversal_iterative(root):
         curr = curr.right
 
 
-
 def preorder_traversal_iterative(root):
     if not root:
         print ""
@@ -56,14 +55,13 @@ def preorder_traversal_iterative(root):
             stack.append(curr.left)
 
 
-
 def postorder_traversal_iterative_2_stacks(root):
     '''
     This is bit different from other 2 traversals. Here if we look at the reverse of postorder, it looks like preorder
     except right is before left. So, we'll use this.
     '''
     stack_1 = []
-    stack_2= []
+    stack_2 = []
     stack_1.append(root)
     while stack_1:
         curr = stack_1.pop()
@@ -76,17 +74,89 @@ def postorder_traversal_iterative_2_stacks(root):
     while stack_2:
         print stack_2.pop(),
 
+
 def postorder_traversal_iterative_1_stacks(root):
     pass
 
 
+def print_diameter(root, result):
+    if not root:
+        return 0
+
+    left = print_diameter(root.left, result)
+    right = print_diameter(root.right, result)
+
+    result[0] = max(result[0], left + right)
+    return max(left, right) + 1
+
+
+def printPathRecur(root):
+    '''
+    Prints all the paths from root to all the leaf nodes
+    :param root:
+    :return:
+    '''
+
+    result = []
+    printPathRecurHelper(root, result, 0)
+
+
+def printPathRecurHelper(root, result, pathlen):
+    if not root:
+        return None
+
+    if len(result) > pathlen:
+        result[pathlen] = root.val
+        del result[pathlen + 1:]  # or we can write a print function in below if to print only till pathLen instead of
+        # complete result array
+    else:
+        result.append(root.val)
+    if root.left is None and root.right is None:
+        print result
+
+    printPathRecurHelper(root.left, result, pathlen + 1)
+    printPathRecurHelper(root.right, result, pathlen + 1)
+
+
+def print_k_sum_path(root, k, sum_so_far, path):
+    '''
+    print all the paths with sum as K
+    :param root:
+    :param k:
+    :return:
+    '''
+    if not root:
+        return None
+
+    path.append(root.val)
+    sum_so_far+= root.val
+
+    if k== sum_so_far:
+        print "path is",path
+    print_k_sum_path(root.left, k,sum_so_far, path)
+    print_k_sum_path(root.right, k,sum_so_far, path)
+    path.pop(-1)
+
 
 if __name__ == '__main__':
+    '''
+                      1
+                    /  \ 
+                   2    3   
+                  / \  / \ 
+                 4  5  3  7
+                           \ 
+                            8      
+    '''
+
     root = Node(1)
     root.left = Node(2)
     root.right = Node(3)
     root.left.left = Node(4)
     root.left.right = Node(5)
+    root.right.left = Node(3)
+    root.right.right = Node(7)
+    root.right.right.right = Node(8)
 
     print "Inorder"
     inorder_traversal(root)
@@ -107,5 +177,12 @@ if __name__ == '__main__':
     print "\n postorder iterative with 1 stack"
     postorder_traversal_iterative_1_stacks(root)
 
+    result = [0]
+    print_diameter(root, result)
+    print "diameter of tree is", result[0]
+
+    printPathRecur(root)
 
 
+    path = []
+    print_k_sum_path(root, 7, 0, path)
