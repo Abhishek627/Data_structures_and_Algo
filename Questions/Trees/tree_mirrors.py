@@ -39,6 +39,8 @@ def check_mirror(root1, root2):
 
 
 
+
+
 if __name__ == '__main__':
     root = Node(1)
     root.left = Node(2)
