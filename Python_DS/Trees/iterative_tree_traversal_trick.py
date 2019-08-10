@@ -2,11 +2,13 @@
 Morris traversal trick to do any tree traversal iteratively instead of doing it using stacks.
 '''
 
+
 class Node(object):
     def __init__(self, val):
         self.val = val
         self.right = None
         self.left = None
+
 
 def iterative_morris_inorder(root):
     from collections import defaultdict
@@ -22,11 +24,16 @@ def iterative_morris_inorder(root):
             continue
 
         count = count_dict[curr]
-        if count == 0: stack.append(curr.left)
-        elif count == 1: print curr.val,
-        elif count == 2: stack.append(curr.right)
-        else: stack.pop()
+        if count == 0:
+            stack.append(curr.left)
+        elif count == 1:
+            print curr.val,
+        elif count == 2:
+            stack.append(curr.right)
+        else:
+            stack.pop()
         count_dict[curr] += 1
+
 
 def iterative_morris_preorder(root):
     from collections import defaultdict
@@ -42,10 +49,14 @@ def iterative_morris_preorder(root):
             continue
 
         count = count_dict[curr]
-        if count == 0: print curr.val,
-        elif count == 1: stack.append(curr.left)
-        elif count == 2: stack.append(curr.right)
-        else: stack.pop()
+        if count == 0:
+            print curr.val,
+        elif count == 1:
+            stack.append(curr.left)
+        elif count == 2:
+            stack.append(curr.right)
+        else:
+            stack.pop()
         count_dict[curr] += 1
 
 
@@ -63,13 +74,15 @@ def iterative_morris_postorder(root):
             continue
 
         count = count_dict[curr]
-        if count == 0: stack.append(curr.left)
-        elif count == 1: stack.append(curr.right)
-        elif count == 2: print curr.val,
-        else: stack.pop()
+        if count == 0:
+            stack.append(curr.left)
+        elif count == 1:
+            stack.append(curr.right)
+        elif count == 2:
+            print curr.val,
+        else:
+            stack.pop()
         count_dict[curr] += 1
-
-
 
 
 if __name__ == '__main__':
@@ -84,6 +97,5 @@ if __name__ == '__main__':
 
     iterative_morris_preorder(root)
     print "\n"
-
 
     iterative_morris_postorder(root)
