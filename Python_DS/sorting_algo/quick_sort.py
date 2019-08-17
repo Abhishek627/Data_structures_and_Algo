@@ -17,7 +17,6 @@ def partition(input_array,start,end):
     input_array[random_pivot_idx],input_array[end]=input_array[end],input_array[random_pivot_idx]
     pivot= input_array[end]
     pindex=start
-    i=0
     for i in range(start,end):
         if(input_array[i]<= pivot):
             if (pindex!=i):

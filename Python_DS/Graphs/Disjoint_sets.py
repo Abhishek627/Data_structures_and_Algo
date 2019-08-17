@@ -3,8 +3,6 @@ Union-find data structure implementation.
 Can be used in myriad of problems like:
 1. Detecting cycles in undirected graph
 2. Job-sequencing problems
-
-
 '''
 
 class DisjointSets():
