@@ -16,11 +16,12 @@ class Solution(object):
     def permute_helper(self, nums, result, temp):
         if len(temp) == len(nums):
             result.append(temp)
-        else:
-            for i in xrange(0, len(nums)):
-                if nums[i] in temp:
-                    continue
-                self.permute_helper(nums, result, temp + [nums[i]])
+
+        for i in xrange(0, len(nums)):
+            if nums[i] in temp:
+                continue
+            self.permute_helper(nums, result, temp + [nums[i]])
+
 
 
 
