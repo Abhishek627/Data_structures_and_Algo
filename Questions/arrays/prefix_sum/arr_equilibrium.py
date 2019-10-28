@@ -17,3 +17,6 @@ def equilibrium_point(arr):
 if __name__ == '__main__':
     arr = [-7, 1, 5, 2, -4, 3, 0]
     equilibrium_point(arr)
+
+    arr= [1,2,3,4,5]
+    print equilibrium_point(arr)
